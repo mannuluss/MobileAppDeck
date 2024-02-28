@@ -1,0 +1,11 @@
+::ng-deep ion-modal {
+  --background: transparent;
+}
+
+.modal-image-bloqueador {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translateY(-50%) translateX(-50%);
+  width: 150px;
+}

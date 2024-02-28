@@ -1,0 +1,7 @@
+{
+  "name": "MobileAppDeck",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
