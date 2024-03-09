@@ -6,27 +6,31 @@ import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import { LayoutModule } from './layout/layout.module';
-import { LoaderModule } from './core/loader/loader.module';
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
-import { LoadingInterceptor } from './core/loader/interceptor/loading.interceptor';
-import { LoaderService } from './core/loader/services/loader.service';
+import { LoaderModule } from '@core/loader/loader.module';
 import { LOADER_PROVIDER_INTERCEPTOR } from './core/loader/loader.provider';
 import { NgApexchartsModule } from 'ng-apexcharts';
+import { LayoutModule } from './layout/layout.module';
+import { KeycloakAngularModule } from 'keycloak-angular';
+import { HttpClientModule } from '@angular/common/http';
+import { authOpenIdInterceptorProviders } from '@core/interceptor/auth.openid.interceptor';
 
 @NgModule({
   declarations: [AppComponent],
   imports: [
     BrowserModule,
+    HttpClientModule,
     IonicModule.forRoot(),
     AppRoutingModule,
     NgApexchartsModule,
+    LayoutModule,
     //LoaderModule,
     //LayoutModule,
   ],
   providers: [
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
-    ...LOADER_PROVIDER_INTERCEPTOR
+    ...LOADER_PROVIDER_INTERCEPTOR,
+    authOpenIdInterceptorProviders,
+    //initKeycloakProvider
   ],
   bootstrap: [AppComponent],
 })

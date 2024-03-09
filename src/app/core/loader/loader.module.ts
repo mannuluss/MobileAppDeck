@@ -12,7 +12,7 @@ import { LoaderComponent } from './components/loader/loader.component';
 
 @NgModule({
   declarations: [BloqueadorComponent, LoaderComponent],
-  exports: [LoaderComponent],
+  exports: [BloqueadorComponent, LoaderComponent],
   imports: [
     CommonModule,
     IonAlert,

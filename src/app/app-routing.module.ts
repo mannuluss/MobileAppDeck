@@ -24,11 +24,9 @@ const routes: Routes = [
       },
       {
         path: 'login',
-        loadComponent: () => import('./login/login.page').then((m) => m.LoginPage),
+        loadChildren: () => import('./login/login.module').then((m) => m.LoginModule),
       },
     ],
-    // redirectTo: 'home',
-    // pathMatch: 'full',
   },
 ];
 

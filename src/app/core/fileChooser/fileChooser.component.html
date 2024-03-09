@@ -5,5 +5,5 @@
   <span>
     Click to upload a file
   </span>
-  <input type="file" #fileInput />
+  <input type="file" #fileInput (input)="change($event)"/>
 </div>

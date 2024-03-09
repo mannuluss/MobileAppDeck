@@ -14,6 +14,11 @@ const routes: Routes = [
             (m) => m.InfoBasicaModule
           ),
       },
+      {
+        path: 'settings',
+        loadChildren: () =>
+          import('./settings/settings.module').then((m) => m.SettingsModule),
+      }
     ],
   },
 ];

@@ -1,0 +1,55 @@
+<ion-content class="container-login">
+  <div class="blur-background"></div>
+
+  <div class="card-login">
+    <div class="title-login">
+      <h2>
+        <!-- <ion-icon name="logo-ionic" color="primary" size="large"></ion-icon> -->
+        Mobile App
+      </h2>
+    </div>
+    <ion-card-content>
+      <form [formGroup]="formAuth">
+        <ion-input
+          label="Username"
+          formControlName="username"
+          label-placement="floating"
+          fill="solid"
+          placeholder="Enter text"
+          type="text"
+        ></ion-input>
+
+        <br />
+        <!-- PASSWORD-->
+
+        <ion-input
+          label="Password"
+          formControlName="password"
+          label-placement="floating"
+          fill="solid"
+          placeholder="Enter password"
+          type="password"
+          (keyup.enter)="login()"
+        ></ion-input>
+      </form>
+
+      <br />
+
+      <ion-button
+        expand="block"
+        (click)="login()"
+        [disabled]="formAuth.invalid"
+      >
+        Login
+      </ion-button>
+
+      <div class="register-container">
+        <a (click)="register()">Register</a>
+      </div>
+
+      <div class="last-button-continue">
+        <span (click)="continue()">Continue anyway</span>
+      </div>
+    </ion-card-content>
+  </div>
+</ion-content>

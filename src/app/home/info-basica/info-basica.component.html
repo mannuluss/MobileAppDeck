@@ -1,10 +1,14 @@
-<app-fileChooser></app-fileChooser>
+<app-fileChooser (files)="changeFile($event)"></app-fileChooser>
 
-<apx-chart
-  [series]="chartOptions.series"
-  [chart]="chart"
-  [plotOptions]="chartOptions.plotOptions"
-  [labels]="chartOptions.labels"
-  [stroke]="chartOptions.stroke"
-  [fill]="chartOptions.fill"
-></apx-chart>
+<ion-textarea
+  fill="outline"
+  label="Informacion"
+  labelPlacement="floating"
+  placeholder="Seleccione un archivo para ver su contenido"
+  [value]="dataJson | json"
+  [disabled]="true"
+  [rows]="20"
+>
+</ion-textarea>
+
+

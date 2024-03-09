@@ -1,11 +1,11 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>
-      Home
-      <ion-button shape="round" (click)="logout()">
+    <ion-title> Home </ion-title>
+    <!-- <ion-buttons slot="end"> -->
+      <ion-button shape="round" slot="end" (click)="logout()">
         <ion-icon name="exit" slot="icon-only"></ion-icon>
       </ion-button>
-    </ion-title>
+    <!-- </ion-buttons> -->
   </ion-toolbar>
 </ion-header>
 
@@ -21,12 +21,12 @@
     <ion-tab-bar slot="bottom">
       <ion-tab-button tab="datos">
         <ion-icon name="triangle"></ion-icon>
-        <ion-label>Tab 1</ion-label>
+        <ion-label>Home</ion-label>
       </ion-tab-button>
 
-      <ion-tab-button tab="pagos">
+      <ion-tab-button tab="settings">
         <ion-icon name="analytics-outline"></ion-icon>
-        <ion-label>Tab 2</ion-label>
+        <ion-label>Settings</ion-label>
       </ion-tab-button>
     </ion-tab-bar>
   </ion-tabs>
