@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { KeycloakService } from 'keycloak-angular';
-import { AuthKeycloakService } from '@core/auth/auth/AuthKeycloakLocal.service';
+import { AuthKeycloakService } from '@core/auth/services/AuthKeycloakLocal.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
@@ -54,6 +54,6 @@ export class LoginPage implements OnInit {
   register() {}
 
   continue() {
-    this.router.navigate(['/home/datos']);
+    this.router.navigate(['/app']);
   }
 }

@@ -4,9 +4,21 @@ import { HomePage } from './page/home.page';
 
 const routes: Routes = [
   {
+    path:'',
+    pathMatch: 'full',
+    redirectTo: 'home'
+  },
+  {
     path: '',
     component: HomePage,
     children: [
+      {
+        path: 'home',
+        loadChildren: () =>
+          import('./list-pages/list-pages.module').then(
+            (m) => m.ListPagesModule
+          ),
+      },
       {
         path: 'datos',
         loadChildren: () =>

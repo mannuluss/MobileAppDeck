@@ -1,9 +1,11 @@
 <div class="file-upload-container" (click)="fileInput.click()">
-  <div class="image">
-    <img src="assets/imgs/file-pdf.png">
+  <div class="container-img">
+    <img src="assets/imgs/file-pdf.png" class="image" />
+    @if (nameFiles){
+    <a href="#">{{ nameFiles }} </a> <ion-icon name="close" (click)="deleteFile()"></ion-icon>
+    } @else {
+    <span> Click or drag file to upload</span>
+    }
   </div>
-  <span>
-    Click to upload a file
-  </span>
-  <input type="file" #fileInput (input)="change($event)"/>
+  <input type="file" #fileInput (input)="change($event)" />
 </div>

@@ -1,7 +1,8 @@
-<p>
-  settings-view works!
-</p>
-
+<div class="logout-button">
+  <ion-button shape="round" slot="end" (click)="logout()">
+    <ion-icon name="exit" slot="icon-only"></ion-icon>
+  </ion-button>
+</div>
 <apx-chart
   [series]="chartOptions.series"
   [chart]="chart"
@@ -9,4 +10,5 @@
   [labels]="chartOptions.labels"
   [stroke]="chartOptions.stroke"
   [fill]="chartOptions.fill"
+  [title]="chartOptions.title"
 ></apx-chart>

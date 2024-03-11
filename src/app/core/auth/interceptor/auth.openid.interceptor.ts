@@ -6,7 +6,7 @@ import {
   HttpEvent,
 } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { AuthKeycloakService } from '@core/auth/auth/AuthKeycloakLocal.service';
+import { AuthKeycloakService } from '@core/auth/services/AuthKeycloakLocal.service';
 
 @Injectable()
 export class AuthOpenIdInterceptor implements HttpInterceptor {

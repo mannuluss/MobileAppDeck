@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthKeycloakService } from '@core/auth/services/AuthKeycloakLocal.service';
 import { ApexOptions } from 'apexcharts';
 
 @Component({
@@ -13,11 +14,11 @@ export class SettingsComponent implements OnInit {
     return this.chartOptions.chart;
   }
 
-  constructor() {}
+  constructor(private authServices: AuthKeycloakService) {}
 
   ngOnInit() {
     this.chartOptions = {
-      series: [10, 50, 20, 30],
+      series: [70, 50],
       chart: {
         height: 350,
         type: 'radialBar',
@@ -26,7 +27,11 @@ export class SettingsComponent implements OnInit {
         },
       },
       title: {
-        text: 'My First Angular Chart',
+        text: 'My First Angular ApexChart',
+        align: 'center',
+        style: {
+          color: 'var(--ion-color-primary)'
+        }
       },
       plotOptions: {
         radialBar: {
@@ -95,5 +100,9 @@ export class SettingsComponent implements OnInit {
         lineCap: 'round',
       },
     };
+  }
+
+  logout() {
+    this.authServices.logout();
   }
 }

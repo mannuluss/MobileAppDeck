@@ -12,7 +12,8 @@ import { NgApexchartsModule } from 'ng-apexcharts';
 import { LayoutModule } from './layout/layout.module';
 import { KeycloakAngularModule } from 'keycloak-angular';
 import { HttpClientModule } from '@angular/common/http';
-import { authOpenIdInterceptorProviders } from '@core/interceptor/auth.openid.interceptor';
+import { authOpenIdInterceptorProviders } from '@core/auth/interceptor/auth.openid.interceptor';
+import { authRouteProviders } from '@core/auth/services/auth.route.provider';
 
 @NgModule({
   declarations: [AppComponent],
@@ -30,6 +31,7 @@ import { authOpenIdInterceptorProviders } from '@core/interceptor/auth.openid.in
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     ...LOADER_PROVIDER_INTERCEPTOR,
     authOpenIdInterceptorProviders,
+    //...authRouteProviders,
     //initKeycloakProvider
   ],
   bootstrap: [AppComponent],

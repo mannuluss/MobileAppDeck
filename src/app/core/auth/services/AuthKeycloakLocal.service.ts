@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { tap } from 'rxjs';
+import { KeycloakProfile, KeycloakTokenParsed } from 'keycloak-js';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
@@ -23,17 +25,19 @@ export class AuthKeycloakService {
     return sessionStorage.getItem('expiresIn');
   }
 
-  get user() {
+  get user(): KeycloakTokenParsed {
     let token = localStorage.getItem('token');
     if (!token) return null;
     let payload = token.split('.')[1];
     let decoded = atob(payload);
-    return {
-      first: JSON.parse(decoded),
-    };
+    return JSON.parse(decoded).first;
   }
 
-  constructor(private http: HttpClient) {}
+  get roles() {
+    return this.user?.realm_access?.roles;
+  }
+
+  constructor(private http: HttpClient, private router: Router) {}
 
   login(username: string, password: string) {
     const body = new URLSearchParams();
@@ -52,7 +56,25 @@ export class AuthKeycloakService {
       .pipe(tap((data: any) => this.saveLocalStorage(data)));
   }
 
-  getRoles() {}
+  logout() {
+    sessionStorage.clear();
+    this.router.navigate(['/login']);
+  }
+
+  refreshTokenCall() {
+    const body = new URLSearchParams();
+    body.set('client_id', environment.keycloak.clientId);
+    body.set('grant_type', 'refresh_token');
+    body.set('refresh_token', this.refreshToken);
+
+    return this.http
+      .post(this.keycloakUrl, body.toString(), {
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
+      })
+      .pipe(tap((data: any) => this.saveLocalStorage(data)));
+  }
 
   saveLocalStorage(data: any) {
     sessionStorage.setItem('token', data.access_token);
