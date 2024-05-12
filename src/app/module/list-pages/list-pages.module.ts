@@ -10,7 +10,10 @@ import {
   IonHeader,
   IonTitle,
   IonSearchbar,
-  IonContent
+  IonContent,
+  IonBackButton,
+  IonButton,
+  IonButtons
 } from '@ionic/angular/standalone';
 
 @NgModule({
@@ -25,7 +28,10 @@ import {
     IonTitle,
     IonToolbar,
     IonSearchbar,
-    IonContent
+    IonContent,
+    IonButton,
+    IonButtons,
+    IonBackButton
   ],
   declarations: [ListPagesComponent],
 })

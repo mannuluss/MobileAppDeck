@@ -1,3 +1,14 @@
-<p>
-  select-app works!
-</p>
+<ion-content>
+  <p>select-app works!</p>
+
+  <ion-buttons>
+    <ion-button [routerLink]="['scraping']" routerDirection="forward">
+      <ion-label>Scraping service</ion-label>
+    </ion-button>
+
+    <ion-button [routerLink]="['updater']" routerDirection="forward">
+      <ion-icon slot="start" name="add"></ion-icon>
+      <ion-label>Updater service</ion-label>
+    </ion-button>
+  </ion-buttons>
+</ion-content>

@@ -19,8 +19,8 @@ const routes: Routes = [
         path: 'description',
         component: AppDescriptionComponent,
       },
-    ]
-  }
+    ],
+  },
 ];
 
 @NgModule({

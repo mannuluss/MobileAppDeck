@@ -1,15 +1,26 @@
-<div class="content">
-  <h1>Scraping  RUT</h1>
-  <app-fileChooser (files)="changeFile($event)"></app-fileChooser>
+<ion-content>
+  <ion-header>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-back-button text="Previous">
+        </ion-back-button>
+      </ion-buttons>
+      <ion-title>Scraping RUT</ion-title>
+    </ion-toolbar>
 
-  <ion-textarea
-    fill="outline"
-    label="Informacion"
-    labelPlacement="floating"
-    placeholder="Seleccione un archivo para ver su contenido"
-    [value]="dataJson | json"
-    [disabled]="true"
-    [rows]="20"
-  >
-  </ion-textarea>
-</div>
+  </ion-header>
+  <div class="content">
+    <app-fileChooser (files)="changeFile($event)"></app-fileChooser>
+
+    <ion-textarea
+      fill="outline"
+      label="Informacion"
+      labelPlacement="floating"
+      placeholder="Seleccione un archivo para ver su contenido"
+      [value]="dataJson | json"
+      [disabled]="true"
+      [rows]="20"
+    >
+    </ion-textarea>
+  </div>
+</ion-content>

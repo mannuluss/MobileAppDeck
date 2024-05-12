@@ -25,6 +25,12 @@ export class LoginPage implements OnInit {
       username: ['', Validators.required],
       password: ['', Validators.required],
     });
+
+    this.authServices.isLogin().subscribe((isLogin) => {
+      if (isLogin) {
+        this.continue();
+      }
+    });
   }
 
   login() {
@@ -32,7 +38,7 @@ export class LoginPage implements OnInit {
     //   console.log('Logged in', this.authServices.user);
     // });
     this.formAuth.markAllAsTouched();
-    if(this.formAuth.invalid) return;
+    if (this.formAuth.invalid) return;
 
     this.authServices
       .login(
@@ -54,6 +60,6 @@ export class LoginPage implements OnInit {
   register() {}
 
   continue() {
-    this.router.navigate(['/app/notifications']);
+    this.router.navigate(['/app/home']);
   }
 }

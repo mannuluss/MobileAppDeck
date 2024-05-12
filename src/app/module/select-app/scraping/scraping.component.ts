@@ -4,6 +4,7 @@ import { ToastController } from '@ionic/angular';
 import { ApexOptions } from 'apexcharts';
 import { catchError } from 'rxjs';
 import { environment } from '../../../../environments/environment';
+import { AlertMessageService } from '@core/alert-message/alert-message.service';
 
 @Component({
   selector: 'app-scraping',
@@ -15,7 +16,7 @@ export class ScrapingComponent implements OnInit {
 
   constructor(
     private http: HttpClient,
-    private toastController: ToastController
+    private alertService: AlertMessageService
   ) {}
 
   ngOnInit() {}
@@ -30,26 +31,18 @@ export class ScrapingComponent implements OnInit {
 
     this.http
       .post<any>(environment.apiScrapingUrl + '/scrapper/rut', formData)
-      .pipe(
-        catchError((error) => {
-          this.presentToast('top', error);
+      .subscribe({
+        next: (response) => {
+          this.alertService.presentToast('Archivo leido correctamente.', 'success');
+          // Handle successful response
+          this.dataJson = response;
+        },
+        error: (error) => {
+          // Handle error
+          console.error('erroro', error);
           this.dataJson = '{}';
-          return error;
-        })
-      )
-      .subscribe((response) => {
-        // Handle successful response
-        this.dataJson = response;
+          this.alertService.presentToast(error, 'danger');
+        },
       });
-  }
-
-  async presentToast(position: 'top' | 'middle' | 'bottom', msj) {
-    const toast = await this.toastController.create({
-      message: msj,
-      duration: 5000,
-      position: position,
-    });
-
-    toast.present();
   }
 }
