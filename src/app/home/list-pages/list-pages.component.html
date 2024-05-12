@@ -1,15 +1,26 @@
-<h1>Pages development</h1>
-<div class="content-list-pages">
-  @for (item of pages$ | async; track item) {
-  <ion-card>
-    <img
-      alt="Silhouette of mountains"
-      src="https://ionicframework.com/docs/img/demos/card-media.png"
-    />
-    <ion-card-header> {{ item.title }}</ion-card-header>
-    <ion-card-content>
-      <a [href]="item.domainURI" target="_blank"> link </a>
-    </ion-card-content>
-  </ion-card>
-  }
-</div>
+<ion-content>
+  <ion-header class="header-container">
+    <ion-toolbar>
+      <ion-title> Pages </ion-title>
+    </ion-toolbar>
+    <ion-toolbar>
+      <!--SEARCHER -->
+      <ion-searchbar animated="true" placeholder="Filtro"></ion-searchbar>
+    </ion-toolbar>
+  </ion-header>
+
+  <div class="content-list-pages">
+    @for (item of pages$ | async; track item) {
+    <ion-card>
+      <img
+        alt="Silhouette of mountains"
+        src="https://ionicframework.com/docs/img/demos/card-media.png"
+      />
+      <ion-card-header> {{ item.title }}</ion-card-header>
+      <ion-card-content>
+        <a [href]="item.domainURI" target="_blank"> link </a>
+      </ion-card-content>
+    </ion-card>
+    }
+  </div>
+</ion-content>

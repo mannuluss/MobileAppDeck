@@ -1,0 +1,25 @@
+<ion-header class="header-app-updater">
+  <ion-toolbar>
+    <ion-searchbar
+      animated="true"
+      placeholder="Application name"
+      (ionInput)="search($event)"
+    ></ion-searchbar>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="container">
+    @for (item of listAppFiltered; track $index) {
+    <div class="card-container-repo">
+      <span class="title-name">
+        {{ item.name }}
+      </span>
+      <span class="title-newer-version">
+        v1.2
+      </span>
+      <img [src]="item.img" class="img-app" />
+    </div>
+    }
+  </div>
+</ion-content>

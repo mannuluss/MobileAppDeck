@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthKeycloakService } from '@core/auth/services/AuthKeycloakLocal.service';
 import { ApexOptions } from 'apexcharts';
 
@@ -14,7 +15,14 @@ export class SettingsComponent implements OnInit {
     return this.chartOptions.chart;
   }
 
-  constructor(private authServices: AuthKeycloakService) {}
+  get stroke(): any {
+    return this.chartOptions.stroke;
+  }
+
+  constructor(
+    private authServices: AuthKeycloakService,
+    private route: Router
+  ) {}
 
   ngOnInit() {
     this.chartOptions = {
@@ -30,8 +38,8 @@ export class SettingsComponent implements OnInit {
         text: 'My First Angular ApexChart',
         align: 'center',
         style: {
-          color: 'var(--ion-color-primary)'
-        }
+          color: 'var(--ion-color-primary)',
+        },
       },
       plotOptions: {
         radialBar: {
@@ -104,5 +112,10 @@ export class SettingsComponent implements OnInit {
 
   logout() {
     this.authServices.logout();
+  }
+
+  notification() {
+    console.log('Notification');
+    this.route.navigate(['/app/notification']);
   }
 }

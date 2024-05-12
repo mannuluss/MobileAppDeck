@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   apiUrl: 'http://amacom.eastus2.cloudapp.azure.com/api',
-  apiScrapingUrl: 'http://feliperojas.live/pythonscraping/api',
+  apiScrapingUrl: 'https://feliperojas.live/pythonscraping/api',
   apiAzureRepository: 'https://gethomepages.azurewebsites.net/api',
   keycloak: {
     clientId: 'front-smart-campus',

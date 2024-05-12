@@ -1,0 +1,28 @@
+<ion-content>
+  <!-- <ion-header class="header-container" *ngIf="title">
+    <ion-toolbar>
+      <ion-title> {{ title }} </ion-title>
+    </ion-toolbar>
+  </ion-header> -->
+
+  <ion-router-outlet></ion-router-outlet>
+
+  <ion-tabs>
+    <ion-tab-bar slot="bottom" class="tab-bar-container">
+      <ion-tab-button tab="home">
+        <ion-icon name="planet-outline"></ion-icon>
+        <ion-label>Home</ion-label>
+      </ion-tab-button>
+
+      <ion-tab-button tab="applications">
+        <ion-icon name="document-outline"></ion-icon>
+        <ion-label>Applications</ion-label>
+      </ion-tab-button>
+
+      <ion-tab-button tab="settings">
+        <ion-icon name="settings-outline"></ion-icon>
+        <ion-label>Settings</ion-label>
+      </ion-tab-button>
+    </ion-tab-bar>
+  </ion-tabs>
+</ion-content>

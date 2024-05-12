@@ -54,6 +54,6 @@ export class LoginPage implements OnInit {
   register() {}
 
   continue() {
-    this.router.navigate(['/app']);
+    this.router.navigate(['/app/notifications']);
   }
 }

@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { HomePage } from './page/home.page';
+import { HomePage } from './page/home.component';
 
 const routes: Routes = [
   {
-    path:'',
+    path: '',
     pathMatch: 'full',
-    redirectTo: 'home'
+    redirectTo: 'home',
   },
   {
     path: '',
@@ -20,17 +20,24 @@ const routes: Routes = [
           ),
       },
       {
-        path: 'datos',
+        path: 'applications',
         loadChildren: () =>
-          import('./info-basica/info-basica.module').then(
-            (m) => m.InfoBasicaModule
+          import('./select-app/select-app.module').then(
+            (m) => m.SelectAppModule
           ),
       },
       {
         path: 'settings',
         loadChildren: () =>
           import('./settings/settings.module').then((m) => m.SettingsModule),
-      }
+      },
+      {
+        path: 'notifications',
+        loadChildren: () =>
+          import('./notifications/notifications.module').then(
+            (m) => m.NotificationsModule
+          ),
+      },
     ],
   },
 ];

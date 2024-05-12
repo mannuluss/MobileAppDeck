@@ -7,15 +7,5 @@ import { LoaderService } from '../core/loader/services/loader.service';
   styleUrls: ['./layout.component.scss'],
 })
 export class LayoutComponent implements OnInit {
-
-  isLoading: boolean = false;
-
-  constructor(private loaderService: LoaderService) {}
-
-  ngOnInit() {
-    this.loaderService.showLoader$.subscribe((value) => {
-      console.log('spinner', value);
-      this.isLoading = value;
-    });
-  }
+  ngOnInit() {}
 }

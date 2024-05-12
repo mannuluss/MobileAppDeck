@@ -1,0 +1,9 @@
+ion-header.header-md {
+  border-bottom: 1px solid var(--ion-color-medium-shade);
+  box-shadow: none;
+  -webkit-box-shadow: none;
+  //Solo se centra el texto del titulo
+  .header-container:not(& > ion-searchbar) {
+    text-align: center;
+  }
+}

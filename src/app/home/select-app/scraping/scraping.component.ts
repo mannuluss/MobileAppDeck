@@ -3,14 +3,14 @@ import { Component, OnInit } from '@angular/core';
 import { ToastController } from '@ionic/angular';
 import { ApexOptions } from 'apexcharts';
 import { catchError } from 'rxjs';
-import { environment } from 'src/environments/environment';
+import { environment } from '../../../../environments/environment';
 
 @Component({
-  selector: 'app-info-basica',
-  templateUrl: './info-basica.component.html',
-  styleUrls: ['./info-basica.component.scss'],
+  selector: 'app-scraping',
+  templateUrl: './scraping.component.html',
+  styleUrls: ['./scraping.component.scss'],
 })
-export class InfoBasicaComponent implements OnInit {
+export class ScrapingComponent implements OnInit {
   dataJson: string = '{}';
 
   constructor(

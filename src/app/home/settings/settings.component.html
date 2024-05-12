@@ -1,14 +1,57 @@
-<div class="logout-button">
-  <ion-button shape="round" slot="end" (click)="logout()">
-    <ion-icon name="exit" slot="icon-only"></ion-icon>
-  </ion-button>
-</div>
-<apx-chart
-  [series]="chartOptions.series"
-  [chart]="chart"
-  [plotOptions]="chartOptions.plotOptions"
-  [labels]="chartOptions.labels"
-  [stroke]="chartOptions.stroke"
-  [fill]="chartOptions.fill"
-  [title]="chartOptions.title"
-></apx-chart>
+<ion-content>
+  <ion-header class="header-container">
+    <ion-toolbar>
+      <ion-title style="text-align: center"> Configuraciones </ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <!--Lista de opciones-->
+  <ion-list lines="full">
+    <!--NOTIFICACIONES-->
+    <ion-item
+      button
+      detail="true"
+      [routerLink]="'/app/settings/notifications'"
+      router-direction="forward"
+    >
+      <ion-icon
+        slot="start"
+        name="notifications-outline"
+        color="primary"z
+      ></ion-icon>
+      <ion-label>Notificaciones</ion-label>
+      <!--badge number icon-->
+      <ion-note slot="end">15</ion-note>
+    </ion-item>
+
+    <!--SELECCIONAR TEMA-->
+    <ion-item button>
+      <ion-icon slot="start" name="contrast-outline" color="primary"></ion-icon>
+      <ion-label>
+        Tema
+        <ion-note color="medium">el color de la interfaz</ion-note>
+      </ion-label>
+    </ion-item>
+
+    <!--Cerrar sesion-->
+    <ion-item button (click)="logout()">
+      <ion-label>Cerrar sesion</ion-label>
+      <ion-icon name="exit" slot="start" color="primary"></ion-icon>
+      <!-- <ion-button shape="round" slot="end" (click)="logout()">
+        <ion-icon name="exit" slot="icon-only"></ion-icon>
+      </ion-button> -->
+    </ion-item>
+  </ion-list>
+  <ion-note color="medium" class="ion-margin-horizontal"
+    >En esta seccion se encuentra la configuracion general de la app.</ion-note
+  >
+  <!--grafica-->
+  <apx-chart
+    [series]="chartOptions.series"
+    [chart]="chart"
+    [plotOptions]="chartOptions.plotOptions"
+    [labels]="chartOptions.labels"
+    [stroke]="stroke"
+    [fill]="chartOptions.fill"
+    [title]="chartOptions.title"
+  ></apx-chart>
+</ion-content>

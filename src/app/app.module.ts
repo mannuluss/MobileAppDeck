@@ -20,7 +20,7 @@ import { authRouteProviders } from '@core/auth/services/auth.route.provider';
   imports: [
     BrowserModule,
     HttpClientModule,
-    IonicModule.forRoot(),
+    IonicModule.forRoot({}),
     AppRoutingModule,
     NgApexchartsModule,
     LayoutModule,
