@@ -1,12 +1,21 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { LayoutComponent } from './layout.component';
 import { IonicModule } from '@ionic/angular';
+import { FormsModule } from '@angular/forms';
+import { LayoutComponent } from './page/layout.component';
+
+import { LayoutRoutingModule } from './layout-routing.module';
+import { LoaderModule } from '@core/loader/loader.module';
+
 
 @NgModule({
-  declarations: [LayoutComponent],
-  exports: [LayoutComponent],
-  imports: [CommonModule, IonicModule],
-  providers: [],
+  imports: [
+    IonicModule,
+    CommonModule,
+    FormsModule,
+    LayoutRoutingModule,
+    LoaderModule
+  ],
+  declarations: [LayoutComponent]
 })
 export class LayoutModule {}

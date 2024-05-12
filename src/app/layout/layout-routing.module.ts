@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { HomePage } from './page/home.component';
+import { LayoutComponent } from './page/layout.component';
 
 const routes: Routes = [
   {
@@ -10,31 +10,31 @@ const routes: Routes = [
   },
   {
     path: '',
-    component: HomePage,
+    component: LayoutComponent,
     children: [
       {
         path: 'home',
         loadChildren: () =>
-          import('./list-pages/list-pages.module').then(
+          import('../module/list-pages/list-pages.module').then(
             (m) => m.ListPagesModule
           ),
       },
       {
         path: 'applications',
         loadChildren: () =>
-          import('./select-app/select-app.module').then(
+          import('../module/select-app/select-app.module').then(
             (m) => m.SelectAppModule
           ),
       },
       {
         path: 'settings',
         loadChildren: () =>
-          import('./settings/settings.module').then((m) => m.SettingsModule),
+          import('../module/settings/settings.module').then((m) => m.SettingsModule),
       },
       {
         path: 'notifications',
         loadChildren: () =>
-          import('./notifications/notifications.module').then(
+          import('../module/notifications/notifications.module').then(
             (m) => m.NotificationsModule
           ),
       },
@@ -46,4 +46,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class HomePageRoutingModule {}
+export class LayoutRoutingModule {}
