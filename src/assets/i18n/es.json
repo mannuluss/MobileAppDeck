@@ -1,0 +1,9 @@
+{
+  "HTTP": {
+    "LOGIN": {
+      "ERROR_401": "Clave o contrasela incorrecta."
+    },
+    "ERROR_500": "Error interno del servidor.",
+    "UNKNOWN_ERROR": "Error desconocido."
+  }
+}

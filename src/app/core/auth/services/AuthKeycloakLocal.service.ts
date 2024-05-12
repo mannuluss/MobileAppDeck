@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
-import { tap } from 'rxjs';
+import { catchError, of, tap } from 'rxjs';
 import { KeycloakProfile, KeycloakTokenParsed } from 'keycloak-js';
 import { Router } from '@angular/router';
+import { AlertMessageService } from '@core/alert-message/alert-message.service';
 
 @Injectable({
   providedIn: 'root',
@@ -37,7 +38,11 @@ export class AuthKeycloakService {
     return this.user?.realm_access?.roles;
   }
 
-  constructor(private http: HttpClient, private router: Router) {}
+  constructor(
+    private http: HttpClient,
+    private router: Router,
+    private alertService: AlertMessageService
+  ) {}
 
   login(username: string, password: string) {
     const body = new URLSearchParams();
@@ -53,7 +58,27 @@ export class AuthKeycloakService {
           'Content-Type': 'application/x-www-form-urlencoded',
         },
       })
-      .pipe(tap((data: any) => this.saveLocalStorage(data)));
+      .pipe(
+        catchError((error) => {
+          console.log('login error', error);
+          let msj = '';
+          switch (error.status) {
+            case 401:
+              msj = 'Clave o contrasela incorrecta.'; //TODO: HTTP.LOGIN.ERROR_404
+              break;
+            default:
+              msj = error; //TODO: HTTP.LOGIN.UNKNOWN_ERROR
+              break;
+          }
+          this.alertService.presentToast(msj, 'danger');
+          return error;
+        }),
+        tap((data: any) => this.saveLocalStorage(data))
+      );
+  }
+
+  isLogin() {
+    return of(this.accessToken ? true : false);
   }
 
   logout() {

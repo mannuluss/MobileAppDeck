@@ -44,7 +44,9 @@ export class LoadingInterceptor implements HttpInterceptor {
     const request = req;
 
     return next.handle(request).pipe(
-      catchError((err: HttpErrorResponse) => throwError(err)),
+      /*catchError((err: HttpErrorResponse) => {
+        return throwError(err);
+      }),*/
       finalize(() => spinnerSubscription?.unsubscribe())
     );
   }

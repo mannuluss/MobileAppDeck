@@ -95,7 +95,6 @@ export class LoaderService {
    * Oculta el loader actual
    */
   public hide(): void {
-    console.log('hide', this.overlayRef);
     this.overlayRef?.dismiss().then(() => {
       this.overlay$.next(null);
     });
