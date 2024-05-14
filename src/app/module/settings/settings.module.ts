@@ -16,6 +16,7 @@ import {
   IonContent,
   IonRouterOutlet,
 } from '@ionic/angular/standalone';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   imports: [
@@ -33,6 +34,7 @@ import {
     IonTitle,
     IonContent,
     NgApexchartsModule,
+    TranslateModule,
   ],
   declarations: [SettingsComponent],
 })

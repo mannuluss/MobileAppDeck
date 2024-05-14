@@ -5,5 +5,10 @@
     },
     "ERROR_500": "Error interno del servidor.",
     "UNKNOWN_ERROR": "Error desconocido."
+  },
+  "MODULES": {
+    "SETTINGS": {
+      "TITLE": "Configuraciónes"
+    }
   }
 }
