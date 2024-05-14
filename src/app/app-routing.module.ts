@@ -22,6 +22,13 @@ const routes: Routes = [
     loadChildren: () =>
       import('./layout/layout.module').then((m) => m.LayoutModule),
   },
+  {
+    path: 'notifications',
+    loadChildren: () =>
+      import('./module/notifications/notifications.module').then(
+        (m) => m.NotificationsModule
+      ),
+  },
 ];
 
 @NgModule({

@@ -1,14 +1,17 @@
-<ion-content>
-  <ion-header>
-    <ion-toolbar>
-      <ion-buttons slot="start">
+<ion-header>
+  <ion-toolbar>
+    <!-- <ion-buttons slot="start">
         <ion-back-button text="Previous">
         </ion-back-button>
-      </ion-buttons>
-      <ion-title>Scraping RUT</ion-title>
-    </ion-toolbar>
+      </ion-buttons> -->
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/app/applications"></ion-back-button>
+    </ion-buttons>
 
-  </ion-header>
+    <!-- <ion-title>Scraping RUT</ion-title> -->
+  </ion-toolbar>
+</ion-header>
+<ion-content>
   <div class="content">
     <app-fileChooser (files)="changeFile($event)"></app-fileChooser>
 

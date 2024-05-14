@@ -1,14 +1,14 @@
-<ion-content>
-  <ion-header class="header-container">
-    <ion-toolbar>
-      <ion-title> Pages </ion-title>
-    </ion-toolbar>
-    <ion-toolbar>
-      <!--SEARCHER -->
-      <ion-searchbar animated="true" placeholder="Filtro"></ion-searchbar>
-    </ion-toolbar>
-  </ion-header>
+<ion-header class="header-container" collapse="fade">
+  <ion-toolbar>
+    <ion-title> Pages </ion-title>
+  </ion-toolbar>
+  <ion-toolbar>
+    <!--SEARCHER -->
+    <ion-searchbar animated="true" placeholder="Filtro"></ion-searchbar>
+  </ion-toolbar>
+</ion-header>
 
+<ion-content>
   <div class="content-list-pages">
     @for (item of pages$ | async; track item) {
     <ion-card>
