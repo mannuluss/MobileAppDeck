@@ -15,15 +15,15 @@ export class AuthKeycloakService {
     `/realms/${environment.keycloak.realm}/protocol/openid-connect/token`;
 
   get accessToken() {
-    return sessionStorage.getItem('token');
+    return localStorage.getItem('token');
   }
 
   get refreshToken() {
-    return sessionStorage.getItem('refreshToken');
+    return localStorage.getItem('refreshToken');
   }
 
   get expiresIn() {
-    return sessionStorage.getItem('expiresIn');
+    return localStorage.getItem('expiresIn');
   }
 
   get user(): KeycloakTokenParsed {
@@ -82,7 +82,7 @@ export class AuthKeycloakService {
   }
 
   logout() {
-    sessionStorage.clear();
+    localStorage.clear();
     this.router.navigate(['/login']);
   }
 
@@ -102,9 +102,9 @@ export class AuthKeycloakService {
   }
 
   saveLocalStorage(data: any) {
-    sessionStorage.setItem('token', data.access_token);
-    sessionStorage.setItem('refreshToken', data.refresh_token);
-    sessionStorage.setItem('expiresIn', data.expires_in);
-    sessionStorage.setItem('user', JSON.stringify(this.user));
+    localStorage.setItem('token', data.access_token);
+    localStorage.setItem('refreshToken', data.refresh_token);
+    localStorage.setItem('expiresIn', data.expires_in);
+    localStorage.setItem('user', JSON.stringify(this.user));
   }
 }
