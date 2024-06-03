@@ -1,8 +1,12 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
-import { catchError, of, tap } from 'rxjs';
-import { KeycloakProfile, KeycloakTokenParsed } from 'keycloak-js';
+import { BehaviorSubject, catchError, of, tap } from 'rxjs';
+import {
+  KeycloakProfile,
+  KeycloakResponseType,
+  KeycloakTokenParsed,
+} from 'keycloak-js';
 import { Router } from '@angular/router';
 import { AlertMessageService } from '@core/alert-message/alert-message.service';
 
@@ -31,18 +35,34 @@ export class AuthKeycloakService {
     if (!token) return null;
     let payload = token.split('.')[1];
     let decoded = atob(payload);
-    return JSON.parse(decoded).first;
+    console.log('token', decoded);
+    return JSON.parse(decoded);
+  }
+
+  get idUsuario() {
+    return localStorage.getItem('idUsuario');
   }
 
   get roles() {
     return this.user?.realm_access?.roles;
   }
 
+  private loginSubject: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(
+    false
+  );
+
   constructor(
     private http: HttpClient,
     private router: Router,
     private alertService: AlertMessageService
   ) {}
+
+  init() {
+    if (this.accessToken) {
+      //this.loginSubject.next(true);
+      this.refreshTokenCall().subscribe();
+    }
+  }
 
   login(username: string, password: string) {
     const body = new URLSearchParams();
@@ -78,12 +98,25 @@ export class AuthKeycloakService {
   }
 
   isLogin() {
-    return of(this.accessToken ? true : false);
+    return this.loginSubject.asObservable();
   }
 
   logout() {
     localStorage.clear();
     this.router.navigate(['/login']);
+  }
+
+  profile() {
+    return this.http
+      .get<{ attributes: any }>(
+        environment.keycloak.url +
+          `/realms/${environment.keycloak.realm}/account`
+      )
+      .pipe(
+        tap((data) => {
+          localStorage.setItem('idUsuario', data.attributes?.id[0]);
+        })
+      );
   }
 
   refreshTokenCall() {
@@ -106,5 +139,6 @@ export class AuthKeycloakService {
     localStorage.setItem('refreshToken', data.refresh_token);
     localStorage.setItem('expiresIn', data.expires_in);
     localStorage.setItem('user', JSON.stringify(this.user));
+    this.loginSubject.next(true);
   }
 }
