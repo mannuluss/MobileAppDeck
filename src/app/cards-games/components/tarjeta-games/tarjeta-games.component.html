@@ -1,0 +1,19 @@
+<div
+  class="tarjeta-container"
+  [class.selected]="selected"
+  [class.disabled]="disabled"
+>
+  <div class="tarjeta-front">
+    <ion-label class="name">{{ item().nombre }}</ion-label>
+    <!-- <img class="imagen" [src]="item.pathFile ?? '/assets/card-temp.png'" /> -->
+    <div class="border-tarjeta"></div>
+  </div>
+
+  <div class="tarjeta-back">
+    <h1>{{ item().nombre }}</h1>
+    <h3>Descripcion</h3>
+    <ion-label>
+      {{ item().descripcion }}
+    </ion-label>
+  </div>
+</div>

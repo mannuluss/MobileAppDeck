@@ -3,7 +3,8 @@ ion-header.header-md {
   box-shadow: none;
   -webkit-box-shadow: none;
   //Solo se centra el texto del titulo
-  .header-container:not(& > ion-searchbar) {
+  //.header-container:not(& > ion-searchbar)
+  ion-title{
     text-align: center;
   }
 }

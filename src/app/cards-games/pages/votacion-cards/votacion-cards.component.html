@@ -1,0 +1,69 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Nombre de la persona</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/login">Logout</ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<!--lista de las personas para seleccionar en la votacion-->
+<ion-content>
+  <div class="container-avatar">
+    <div class="lista-avatar" [style]="'--pos:' + orderAvatar">
+      @for (item of listPlayers; track $index) {
+      <!-- <ion-avatar> -->
+      <img
+        alt="Silhouette of a person's head"
+        src="https://ionicframework.com/docs/img/demos/avatar.svg"
+        class="avatar"
+        [class.disabled-player]="$index !== orderAvatar"
+        [class.avatar-selected]="$index === orderAvatar"
+      />
+      <!-- </ion-avatar> -->
+      }
+    </div>
+    <div class="text-label-avatar">
+      @if (listPlayers) {
+      <ion-label>{{ listPlayers[orderAvatar]?.nombre }}</ion-label>
+      }
+    </div>
+  </div>
+
+  <div #caruselCards class="carusel-container">
+    <div
+      class="carusel-cards"
+      [style]="'--margin-carusel-card:' + marginCaruselCards + 'px'"
+    >
+      @for (item of listTarjetas; track $index) {
+      <app-tarjeta-games
+        [item]="item"
+        [selected]="idCurrentTarjeta === item.id"
+        [disabled]="disableTarjeta(item.id)"
+        (click)="seleccionarVoto(item.id)"
+      ></app-tarjeta-games>
+      }
+    </div>
+  </div>
+</ion-content>
+
+<ion-footer>
+  <div class="footer-buttons">
+    <ion-button fill="outline" (click)="back()" [disabled]="orderAvatar == 0">
+      <ion-icon name="arrow-back"></ion-icon>
+    </ion-button>
+
+    @if (listPlayers && orderAvatar < listPlayers.length-1) {
+    <ion-button
+      style="width: 100%"
+      (click)="next()"
+      [disabled]="!listVotos.has(idCurrentPlayer)"
+    >
+      Siguiente
+    </ion-button>
+    } @else {
+    <ion-button style="width: 100%" (click)="enviar()">
+      Enviar Votacion
+    </ion-button>
+    }
+  </div>
+</ion-footer>
