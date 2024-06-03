@@ -1,12 +1,8 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { NotFoundComponent } from '@core/not-found/not-found.component';
 
 const routes: Routes = [
-  // {
-  //   path: '**',
-  //   redirectTo: 'login',
-  //   pathMatch: 'full',
-  // },
   {
     path: '',
     redirectTo: 'login',
@@ -27,6 +23,13 @@ const routes: Routes = [
     loadChildren: () =>
       import('./module/notifications/notifications.module').then(
         (m) => m.NotificationsModule
+      ),
+  },
+  {
+    path: 'card-games',
+    loadChildren: () =>
+      import('./cards-games/cards-games.module').then(
+        (m) => m.CardsGamesModule
       ),
   },
 ];

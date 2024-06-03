@@ -6,6 +6,7 @@ import { FileChooserModule } from '@core/fileChooser/fileChooser.module';
 import { SelectAppComponent } from './page/select-app.component';
 import { GithubApplicationsUpdaterComponent } from './components/github-applications-updater/github-applications-updater.component';
 import { IonicModule } from '@ionic/angular';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { IonicModule } from '@ionic/angular';
     InfoBasicaRoutingModule,
     FileChooserModule,
     IonicModule,
+    TranslateModule,
   ],
 })
 export class SelectAppModule {}

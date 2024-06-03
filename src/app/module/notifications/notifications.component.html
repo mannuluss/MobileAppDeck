@@ -8,5 +8,24 @@
   </ion-toolbar>
 </ion-header>
 <ion-content>
-  <p>notifications works!</p>
+  <ion-list [inset]="false" lines="inset">
+    @for (item of listNotifications; track $index) {
+    <!-- CONTENEDOR DE LA NOTIFICACION -->
+    <ion-item button>
+      <!--ICONO DEL MENSAJE-->
+      <ion-icon slot="start" [name]="item.icon ?? 'notifications'"></ion-icon>
+      <!--TEXTO-->
+      <ion-label>
+        <!--TITULO DEL MENSAJE-->
+        <h2>{{ item.title }}</h2>
+        <!--DESCRIPCION DEL MENSSAGE-->
+        <ion-note>
+          {{ item.description }}
+        </ion-note>
+      </ion-label>
+      <!--BADGE-->
+      <ion-note slot="end">{{ item.date | date : "YYYY-MM-DD" }}</ion-note>
+    </ion-item>
+    }
+  </ion-list>
 </ion-content>

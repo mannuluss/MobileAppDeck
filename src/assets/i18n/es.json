@@ -9,6 +9,9 @@
   "MODULES": {
     "SETTINGS": {
       "TITLE": "Configuraciónes"
+    },
+    "SCRAPING": {
+      "TITLE": "SCRAPING RUT"
     }
   }
 }
