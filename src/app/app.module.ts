@@ -12,6 +12,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { authOpenIdInterceptorProviders } from '@core/auth/interceptor/auth.openid.interceptor';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { HttpLoaderFactory } from '@core/i18n/translate.provider';
+import { NotFoundModule } from '@core/not-found/not-found.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -29,6 +30,7 @@ import { HttpLoaderFactory } from '@core/i18n/translate.provider';
     IonicModule.forRoot({}),
     AppRoutingModule,
     NgApexchartsModule,
+    NotFoundModule,
     //LayoutModule,
     //LoaderModule,
     //LayoutModule,
