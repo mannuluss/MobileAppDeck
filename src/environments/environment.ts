@@ -7,6 +7,7 @@ export const environment = {
   apiUrl: 'http://amacom.eastus2.cloudapp.azure.com/api',
   apiScrapingUrl: 'https://feliperojas.live/pythonscraping/api',
   apiAzureRepository: 'https://gethomepages.azurewebsites.net/api',
+  apiAzureRepoSprint: 'https://gethomepages.azurewebsites.net/api',
   keycloak: {
     clientId: 'front-smart-campus',
     realm: 'smart-campus-iot',
