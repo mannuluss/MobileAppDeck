@@ -10,7 +10,12 @@ export class CardSprintService {
 
   getConfig() {
     return this.http.get<any>(
-      `${environment.apiAzureRepoSprint}/getConfigSprintVotation`
+      `${environment.apiAzureRepoSprint}/getConfigSprintVotation`,
+      {
+        headers: {
+          'LOADING-SCREEN': 'NONGET',
+        },
+      }
     );
   }
 

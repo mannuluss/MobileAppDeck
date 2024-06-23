@@ -3,7 +3,16 @@
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher>
 
-  <ion-label>
-    AQUI VAN LOS RESULTADOS DE LA VOTACION, DESLIZA HACIA ABAJO PARA RECARGAR
-  </ion-label>
+  <div class="home-container-1" (click)="siguiente()">
+    <h1 class="title">
+      <strong> CARD GAME </strong>
+    </h1>
+    <div class="card-list" [class.anim-back-direction]="backwardsAnim">
+      <div class="group">
+        <img class="card-1" src="/assets/imgs/card-wars.png" />
+        <img class="card-2" src="/assets/imgs/card-wars.png" />
+        <img class="card-3" src="/assets/imgs/card-wars.png" />
+      </div>
+    </div>
+  </div>
 </ion-content>

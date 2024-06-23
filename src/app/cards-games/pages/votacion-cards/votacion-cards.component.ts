@@ -110,6 +110,9 @@ export class VotacionCardsComponent implements OnInit {
   }
 
   seleccionarVoto(idTarjeta) {
+    if (this.disableTarjeta(idTarjeta)) {
+      return;
+    }
     this.idCurrentTarjeta = idTarjeta;
     this.listVotos.set(this.listPlayers[this.orderAvatar].id, idTarjeta);
   }
@@ -136,7 +139,7 @@ export class VotacionCardsComponent implements OnInit {
     });
     this.sprintService.saveVotacion(votos).subscribe((data) => {
       console.log(data);
-      this.router.navigate(['/card-game/home']);
+      this.router.navigate(['/card-games/home']);
     });
   }
 }

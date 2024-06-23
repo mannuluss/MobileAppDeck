@@ -23,9 +23,8 @@ import { ModalController } from '@ionic/angular';
 export class LoadingInterceptor implements HttpInterceptor {
   //loaderService: LoaderService;
   constructor(
-    private loaderService: LoaderService
-  ) //private modalController: ModalController
-  {
+    private loaderService: LoaderService //private modalController: ModalController
+  ) {
     //this.loaderService = Inject(LoaderService);
   }
 
@@ -33,8 +32,8 @@ export class LoadingInterceptor implements HttpInterceptor {
     const instancia = this.loaderService; //new LoaderService(this.modalController);
     //start loader
     const spinnerShow = () =>
-      (req.method === 'GET' || req.headers.get('SIMULATE-LOADER') === 'GET') &&
-      req.headers.get('SIMULATE-LOADER') !== 'NONGET'
+      (req.method === 'GET' || req.headers.get('LOADING-SCREEN') === 'GET') &&
+      req.headers.get('LOADING-SCREEN') !== 'NONGET'
         ? instancia.spinner$.subscribe()
         : instancia.spinnerNoGet$.subscribe();
 
@@ -45,6 +44,7 @@ export class LoadingInterceptor implements HttpInterceptor {
 
     return next.handle(request).pipe(
       /*catchError((err: HttpErrorResponse) => {
+        spinnerSubscription?.unsubscribe();
         return throwError(err);
       }),*/
       finalize(() => spinnerSubscription?.unsubscribe())

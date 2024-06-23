@@ -1,0 +1,84 @@
+//$var-anim-config: 5s forwards 1s infinite;
+
+.home-container-1 {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  .title {
+    font-size: 50px;
+    position: absolute;
+    left: 50%;
+    top: 175px;
+    text-wrap: nowrap;
+    transform: translate(-50%, 0px);
+  }
+  .card-list {
+    position: absolute;
+    transform: translate(-50%, 50%);
+    left: 50%;
+    bottom: 45%;
+    width: 250px;
+    height: 250px;
+    animation-name: card-list-start;
+    //animation-iteration-count: infinite;
+    &,
+    .card-1,
+    .card-2,
+    .card-3 {
+      animation-duration: var(--anim-duration);
+      animation-delay: var(--anim-delay);
+    }
+    //variables
+    --anim-duration: 4s;
+    --anim-delay: 500ms;
+
+    .group {
+      position: relative;
+    }
+    .card-1,
+    .card-2,
+    .card-3 {
+      //src: url('/assets/imgs/card-wars.png');
+      width: 110px;
+      //height: 81px;
+      border-radius: 8px;
+      position: absolute;
+      animation-duration: var(--anim-duration);
+    }
+    .card-1 {
+      animation-name: card-start;
+
+      transform: rotate(25deg);
+      position: absolute;
+      left: 180px;
+      top: 20px;
+    }
+    .card-2 {
+      position: absolute;
+      left: 90px;
+    }
+    .card-3 {
+      animation-name: card-start;
+
+      transform: rotate(-25deg);
+      position: absolute;
+      left: 0;
+      translate: 0px 20px;
+    }
+  }
+}
+
+@keyframes card-list-start {
+  0% {
+    bottom: -25px;
+  }
+  100% {
+    bottom: 45%;
+  }
+}
+@keyframes card-start {
+  0% {
+    left: 90px;
+    transform: rotate(0);
+  }
+}
